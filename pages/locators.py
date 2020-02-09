@@ -12,3 +12,8 @@ class LoginPageLocators:
 
 class ProductPageLocators:
     BASKET_BUTTON = (By.CLASS_NAME, 'btn-add-to-basket')
+    PRODUCT_NAME = (By.XPATH, '//div[@class="col-sm-6 product_main"]/h1')
+    PRODUCT_PRICE = (By.XPATH, '//div[@class="col-sm-6 product_main"]/p[@class="price_color"]')
+    MESSAGE_PRODUCT_NAME = (By.XPATH, '//div[@class="alertinner "]/strong')
+    MESSAGE_PRODUCT_PRICE = (By.XPATH, '//div[@class="alertinner "]/p/strong')
+
