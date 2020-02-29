@@ -52,3 +52,15 @@ class ProductPage(BasePage):
         # проверка что кнопка есть
         assert self.is_element_present(*ProductPageLocators.BASKET_BUTTON), \
             "Button add product to basket is not presented"
+
+    def should_not_be_success_message(self):
+        print("should_not_be_success_message")
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_PRODUCT_NAME), \
+            "Success message is presented, but should not be"
+
+    def should_be_disappearance_success_message(self):
+        print("should_be_disappearance_success_message")
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_PRODUCT_NAME), \
+            "Success message should have disappeared, but it didn't"
+
+

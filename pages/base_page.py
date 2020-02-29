@@ -1,15 +1,18 @@
 import math
+from selenium.webdriver.support import expected_conditions as EC
 
 from selenium.webdriver import Remote as RemoteWebDriver
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.common.exceptions import NoAlertPresentException
+from selenium.webdriver.support.wait import WebDriverWait
+from .locators import BasePageLocators
 
 
 class BasePage:
     def __init__(self, browser: RemoteWebDriver, url):
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(30)
+        # self.browser.implicitly_wait(30)
 
     def open(self):
         self.browser.get(self.url)
@@ -19,6 +22,27 @@ class BasePage:
             self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
+        return True
+
+    def is_not_element_present(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+            print("try is not el pre")
+        except TimeoutException:
+            print("false is not el pre")
+            return True
+        print("false is disap")
+        return False
+
+    def is_disappeared(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException). \
+                until_not(EC.presence_of_element_located((how, what)))
+            print("try is disap")
+        except TimeoutException:
+            print("false is disap")
+            return False
+        print("true is disap")
         return True
 
     def solve_quiz_and_get_code(self):
@@ -34,3 +58,11 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), \
+            "Login link is not presented"
