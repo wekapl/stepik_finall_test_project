@@ -1,8 +1,5 @@
-import math
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import Remote as RemoteWebDriver
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.wait import WebDriverWait
 from .locators import BasketPageLocators
 from .base_page import BasePage

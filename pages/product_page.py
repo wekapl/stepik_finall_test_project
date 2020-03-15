@@ -1,6 +1,4 @@
-import time
 
-from selenium.common.exceptions import NoAlertPresentException
 
 from .base_page import BasePage
 from .locators import ProductPageLocators

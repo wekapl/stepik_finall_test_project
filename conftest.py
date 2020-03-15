@@ -1,7 +1,6 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver import Remote as RemoteWebDriver
 
 
 def pytest_addoption(parser):
