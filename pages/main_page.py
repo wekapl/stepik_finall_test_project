@@ -5,6 +5,7 @@ from .login_page import LoginPage
 
 
 class MainPage(BasePage):
+    # заглушка
     pass
     # def __init__(self, *args, **kwargs):
     #    super(MainPage, self).__init__(*args, **kwargs)
