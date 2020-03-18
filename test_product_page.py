@@ -49,9 +49,11 @@ class TestUserAddToBasketFromProductPage:
 
 
 @pytest.mark.need_review
-@pytest.mark.parametrize('link', ["0", "1", "2", "3", "4", "5", "6",
-                                  pytest.param("7", marks=pytest.mark.xfail(reason="test fail")),
-                                  "8", "9"])
+@pytest.mark.parametrize('link', ["0"])
+# параметры убраны в комментарий для сокращения времени прохожедния теста
+# , "1", "2", "3", "4", "5", "6",
+#                              pytest.param("7", marks=pytest.mark.xfail(reason="test fail")),
+#                              "8", "9"])
 def test_guest_can_add_product_to_basket(browser, link):
     # тест с параментром url - для товара из промо акции -  7 тест падает
     # тест пользователь может добавить продукт в корзину
